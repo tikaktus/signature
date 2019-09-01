@@ -35,30 +35,30 @@
 			$this->col[] = ["label"=>"Date Issue","name"=>"date_issue"];
 			$this->col[] = ["label"=>"Start","name"=>"start"];
 			$this->col[] = ["label"=>"End","name"=>"end"];
-			$this->col[] = ["label"=>"Employees","name"=>"employees_id","join"=>"employees,name"];
+			$this->col[] = ["label"=>"Employees","name"=>"employees_nik","join"=>"employees,name"];
 			$this->col[] = ["label"=>"Status","name"=>"status"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Categories','name'=>'categories_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'categories,name'];
-			$this->form[] = ['label'=>'Rooms','name'=>'rooms_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'rooms,name'];
+			$this->form[] = ['label'=>'Rooms','name'=>'rooms_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'rooms,name','datatable_where'=>'status != 1'];
 			$this->form[] = ['label'=>'Date Issue','name'=>'date_issue','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Start','name'=>'start','type'=>'time','validation'=>'required|date_format:H:i:s','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'End','name'=>'end','type'=>'time','validation'=>'required|date_format:H:i:s','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Employees','name'=>'employees_id','type'=>'checkbox','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'employees,name'];
-			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:10','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Employees','name'=>'employees_nik','type'=>'select2','validation'=>'required|required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'hidden','validation'=>'required|min:1|max:10','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
 			//$this->form[] = ['label'=>'Categories','name'=>'categories_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'categories,name'];
-			//$this->form[] = ['label'=>'Rooms','name'=>'rooms_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'rooms,name'];
+			//$this->form[] = ['label'=>'Rooms','name'=>'rooms_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'rooms,name','datatable_where'=>'status != 1'];
 			//$this->form[] = ['label'=>'Date Issue','name'=>'date_issue','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Start','name'=>'start','type'=>'time','validation'=>'required|date_format:H:i:s','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'End','name'=>'end','type'=>'time','validation'=>'required|date_format:H:i:s','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Employees','name'=>'employees_id','type'=>'checkbox','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:10','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Employees','name'=>'employees_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'hidden','validation'=>'required|min:1|max:10','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
@@ -158,7 +158,11 @@
 	        | $this->script_js = "function() { ... }";
 	        |
 	        */
-	        $this->script_js = NULL;
+	        $this->script_js = "";
+
+	        
+// aria-multiselectable
+	        
 
 
             /*
@@ -268,7 +272,11 @@
 	    */
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
-
+	        // dd($postdata);
+	        DB::table('rooms')
+            			->where('id', $postdata['rooms_id'])
+            			->update(['status' => 1]);
+         //    // dd($room);
 	    }
 
 	    /* 
@@ -335,6 +343,6 @@
 
 
 	    //By the way, you can still create your own method in here... :) 
-
+	    
 
 	}

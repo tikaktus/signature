@@ -21,8 +21,8 @@ class CreateSchedulesTable extends Migration
             $table->date('date_issue');
             $table->time('start');
             $table->time('end');
-            $table->integer('employees_id');
-            $table->boolean('status')->default('1');
+            $table->string('employees_nik')->nullable();
+            $table->string('status')->nullable();
 
             $table->timestamps();
         });

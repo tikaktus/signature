@@ -45,17 +45,17 @@
 			$this->form[] = ['label'=>'Email','name'=>'email','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Team','name'=>'team','type'=>'select','validation'=>'required','width'=>'col-sm-10','dataenum'=>'Nonshift;A;B;C;Group A;Group B;Group C;Group D'];
 			$this->form[] = ['label'=>'Departemen','name'=>'departemen','type'=>'text','validation'=>'required|min:1|max:30','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:20','width'=>'col-sm-10'];
+			// $this->form[] = ['label'=>'Status','name'=>'status','type'=>'select','validation'=>'required|min:1|max:20','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
 			//$this->form[] = ['label'=>'Nik','name'=>'nik','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Name','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			//$this->form[] = ['label'=>'Email','name'=>'email','type'=>'text','validation'=>'required','width'=>'col-sm-10','dataenum'=>'Nonshift;A;B;C;Group A;Group B;Group C;Group D'];
-			//$this->form[] = ['label'=>'Team','name'=>'team','type'=>'select','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Email','name'=>'email','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Team','name'=>'team','type'=>'select','validation'=>'required','width'=>'col-sm-10','dataenum'=>'Nonshift;A;B;C;Group A;Group B;Group C;Group D'];
 			//$this->form[] = ['label'=>'Departemen','name'=>'departemen','type'=>'text','validation'=>'required|min:1|max:30','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:20','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'select2','validation'=>'required|min:1|max:20','width'=>'col-sm-10','datatable'=>'employees,status','datatable_ajax'=>'deafult: true'];
 			# OLD END FORM
 
 			/* 
